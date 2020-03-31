@@ -3,19 +3,19 @@ import time,datetime
 from selenium import webdriver
 
 
-login_id = ''
-pas = ''
+login_id = 'hogehoge@gmail.com'
+pas = '********'
 
 #Headless mode
 options = webdriver.chrome.options.Options()
 options.add_argument('--headless')
 options.add_argument('--lang=ja-JP')
-#local用
+#local mode
 #driver = webdriver.Chrome(executable_path='./chromedriver' , chrome_options = options)
-#heroku用
+#heroku mode
 driver = webdriver.Chrome(executable_path='./.chromedriver/bin/chromedriver', chrome_options = options)
 
-#googleログイン
+#google login
 driver.get('https://accounts.google.com')
 time.sleep(1.5)
 driver.find_element_by_xpath("//*[@id='identifierId'] | //*[@id='Email']").send_keys(login_id)
@@ -26,7 +26,7 @@ driver.find_element_by_xpath("//*[@id='passwordNext'] | //*[@id='signIn']").clic
 time.sleep(10)
 
 #Mymap
-driver.get('https://drive.google.com/open?id=1iSrh8pF7SdYps-lGf7jMgxlNjn3tbp7-&usp=sharing')
+driver.get('--- URL of Mymap ---')
 time.sleep(10)
 element = driver.find_element_by_id("map-action-add-layer")
 element.click()
@@ -62,7 +62,7 @@ element = driver.find_element_by_xpath('/html/body/div[7]/div[3]/button[1]')
 element.click()
 time.sleep(10)
 
-#古いレイヤの削除
+#delete old layer
 element = driver.find_element_by_xpath('//*[@id="ly0-layer-header"]/div[3]')
 element.click()
 time.sleep(2)
@@ -73,7 +73,7 @@ element = driver.find_element_by_xpath('//*[@id="cannot-undo-dialog"]/div[3]/but
 element.click()
 time.sleep(5)
 
-#新しいレイヤの名前変更
+#change the name of the new layer 
 element = driver.find_element_by_xpath('//*[@id="ly1-layer-header"]/div[3]')
 element.click()
 time.sleep(2)
